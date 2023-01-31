@@ -1,4 +1,5 @@
 import 'package:dart_week_app/app/core/rest_client/custom_dio.dart';
+import 'package:dart_week_app/app/pages/home/home_controller.dart';
 import 'package:dart_week_app/app/pages/home/home_page.dart';
 import 'package:dart_week_app/app/repositories/products/products_repository.dart';
 import 'package:dart_week_app/app/repositories/products/products_repository_impl.dart';
@@ -15,6 +16,9 @@ class HomeRouter {
               dio: context.read<CustomDio>(),
             ),
           ),
+          Provider(
+            create: (context) => HomeController(context.read()),
+          )
         ],
         child: const HomePage(),
       );
