@@ -21,7 +21,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends BaseState<HomePage, HomeController> {
-  
   @override
   void onReady() {
     controller.loadProducts();
@@ -33,23 +32,19 @@ class _HomePageState extends BaseState<HomePage, HomeController> {
     return Scaffold(
       appBar: DeliveryAppBar(),
       body: BlocConsumer<HomeController, HomeState>(
-        listener: (context, state) {
-          state.status.matchAny(
-            any: () => hideLoader(),
-            initial: () {},
-            loading: () => showLoader(),
-            loaded: () {},
-            error: () {
-              hideLoader();
-              showError(state.errormessage ?? 'Erro não informado');
-            },
-          );
-        },
-        buildWhen: (previous, current) => current.status.matchAny(
-          any: () => false,
-          initial: () => true,
-          loaded: () => true,
-        ),
+        listener: (context, state) {},
+        //listener: (context, state) {
+        // state.status.matchAny(
+        //   any: () => hideLoader(),
+        //   initial: () {},
+        //   loading: () => showLoader(),
+        //   loaded: () => hideLoader(),
+        //   error: () {
+        //     hideLoader();
+        //     showError(state.errormessage ?? 'Erro não informado');
+        //   },
+        // );
+        //},
         builder: (context, state) {
           return Column(
             children: [
@@ -58,7 +53,6 @@ class _HomePageState extends BaseState<HomePage, HomeController> {
                   itemCount: state.products.length,
                   itemBuilder: (context, index) {
                     final product = state.products[index];
-
                     return DeliveryProductTile(
                       product: product,
                     );
