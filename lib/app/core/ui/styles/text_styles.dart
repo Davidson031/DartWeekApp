@@ -42,6 +42,8 @@ class TextStyles {
     fontFamily: font
   );
 
+  TextStyle get textTitle => textExtraBold.copyWith(fontSize: 28);
+
   TextStyle get textButtonLabel => textBold.copyWith(fontSize: 14);
 
 

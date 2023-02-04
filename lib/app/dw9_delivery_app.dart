@@ -1,9 +1,12 @@
 import 'package:dart_week_app/app/core/ui/theme/theme_config.dart';
+import 'package:dart_week_app/app/dto/order_product_dto.dart';
+import 'package:dart_week_app/app/pages/auth/login/login_page.dart';
+import 'package:dart_week_app/app/pages/auth/register/register_page.dart';
+import 'package:dart_week_app/app/pages/home/home_controller.dart';
 import 'package:dart_week_app/app/pages/home/home_page.dart';
 import 'package:dart_week_app/app/pages/home/home_router.dart';
 import 'package:dart_week_app/app/pages/product_detail/product_detail_router.dart';
 import 'package:dart_week_app/app/pages/splash/splash_page.dart';
-import 'package:dart_week_app/app/pages/teste.dart';
 import 'package:dart_week_app/app/repositories/products/products_repository.dart';
 import 'package:dart_week_app/app/repositories/products/products_repository_impl.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +28,9 @@ class Dw9DeliveryApp extends StatelessWidget {
         routes: {
           '/' : (context) => const SplashPage(),
           '/home':(context) => HomeRouter.page,
-          '/productDetail':(context) => ProductDetailRouter.page
+          '/productDetail':(context) => ProductDetailRouter.page,
+          '/auth/login': (context) => const LoginPage(),
+          '/auth/register': (context) => const RegisterPage()
         },
       ),
     );
