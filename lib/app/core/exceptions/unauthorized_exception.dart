@@ -1,0 +1,3 @@
+class UnauthorizedExcepion implements Exception { 
+
+}

@@ -12,22 +12,20 @@ class ShoppingBagWidget extends StatelessWidget {
 
   const ShoppingBagWidget({super.key, required this.bag});
 
-  Future<void> _goOrder(BuildContext context) async { 
-
-    final navigator =  Navigator.of(context);
+  Future<void> _goOrder(BuildContext context) async {
+    final navigator = Navigator.of(context);
 
     final sp = await SharedPreferences.getInstance();
 
-    
-
-    if(!sp.containsKey("accessToken")){
-
+    if (!sp.containsKey("accessToken")) {
       final loginResult = await navigator.pushNamed("/auth/login");
-      
-    } 
 
-    //order
+      if (loginResult == null || loginResult == false) {
+        return;
+      }
+    }
 
+    await navigator.pushNamed("/order", arguments: {bag});
   }
 
   @override
@@ -42,7 +40,9 @@ class ShoppingBagWidget extends StatelessWidget {
       height: 90,
       decoration: const BoxDecoration(
         color: Colors.white,
-        boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 5)],
+        boxShadow: [
+          BoxShadow(color: Colors.black12, blurRadius: 5),
+        ],
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(7),
           topRight: Radius.circular(10),
